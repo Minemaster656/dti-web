@@ -7,7 +7,7 @@
     "start": "node index",
     "dev": "nodemon index"
   },
-  "author": "",
+  "author": "Minemaster",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
