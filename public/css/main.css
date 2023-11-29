@@ -1,0 +1,22 @@
+body{
+    color: #f4ffff;
+    
+    filter: none;
+    background-color: #353b40;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-top: 64px;
+    text-align: center;
+    
+}
+.mirage{
+    text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5;
+}
+a{
+    color:white;
+    text-shadow: -1px -1px 1.5px #00e1ffa5, 1px 1px 1.5px #ff007ba5, 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5;
+    text-decoration: underline;
+}
+::selection {
+    background-color: #00e1ffa5; /* замените #ffff00 на желаемый цвет в формате HEX или названии цвета */
+    color: #ffd6f1; /* замените #000000 на желаемый цвет текста в формате HEX или названии цвета */
+}
