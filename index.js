@@ -5,9 +5,12 @@ const fs = require('fs')
 let server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
     
-
-    const stream = fs.createReadStream('./templates/index.html')
-    stream.pipe(res)
+    if(req.url=='/')
+        fs.createReadStream('./templates/index.html').pipe(res)
+    else if (req.url=='/about')
+        fs.createReadStream('./templates/about.html').pipe(res)
+    else
+        fs.createReadStream('./templates/error.html').pipe(res)
 
 })
 
