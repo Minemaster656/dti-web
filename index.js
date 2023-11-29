@@ -1,37 +1,17 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const exphbs = require('express-handlebars')
+const http = require('http')
 
-const PORT = process.env.PORT || 3003
 
-const app = express()
-const hbs = exphbs.create({
-    defaultLayout: 'main',
-    extname: 'hbs'
+let server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
+    res.end('Micha <b>Clown</b>')
 
 })
 
-app.engine('hbs', hbs.engine)
-app.set('view engine', 'hbs')
-app.set('views', 'views')
+const PORT = 3000
+const HOST = 'localhost' //127.0.0.1
 
-async function start(){
-    try{
-        await mongoose.connect('mongodb://localhost:27017', {
-            useNewUrlParser: true,
-            useFindAndModify: false
-        })
-        app.listen(PORT, () => {
-            console.log('Server is already started')
-        
-        })
-        
+server.listen(PORT, HOST, ()=>{
 
-    }catch(e){
-        console.log(e)
-    }
+    console.log(`Сервер запущен по адресу http://${HOST}:${PORT}`)
+})
 
-}
-
-
-start()
