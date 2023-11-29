@@ -1,10 +1,36 @@
-const http = require('http')
+// const http = require('http')
 const fs = require('fs')
 const express = require('express')
+const { compileFunction } = require('vm')
+
 const app = express()
+app.set('view engine', 'ejs')
+
+const PORT = 443
+const HOST = 'localhost' //127.0.0.1
+
+const HTML_PATH = __dirname+ '/templates/'
 
 
+app.get('/', (req, res) => {
+    res.render('index')
+})
+app.get('/about', (req, res) => {
+    res.render('about')
+})
+app.get('/user/:name', (req, res) => {
+    res.render(`user`, {name : req.params.name})
+})
+app.get('*', (req, res) => {
+    res.status(404).render('error')
+})
 
+
+app.listen(PORT, ()=>{
+    console.log(`Сервер запущен по адресу http://${HOST}:${PORT}`)
+
+
+})
 
 
 
@@ -20,8 +46,7 @@ const app = express()
 
 // })
 
-const PORT = 443
-const HOST = 'localhost' //127.0.0.1
+
 
 // server.listen(PORT, HOST, ()=>{
 
