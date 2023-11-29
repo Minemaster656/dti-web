@@ -7,7 +7,7 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-const PORT = 80
+const PORT = 3003
 const HOST = 'localhost' //127.0.0.1
 
 const HTML_PATH = __dirname+ '/templates/'
@@ -21,6 +21,12 @@ app.get('/about', (req, res) => {
 })
 app.get('/user/:name', (req, res) => {
     res.render(`user`, {name : req.params.name})
+})
+app.get('/projects', (req, res) => {
+    res.render('projects')
+})
+app.get('/employee', (req, res) => {
+    res.render('employee')
 })
 app.get('*', (req, res) => {
     res.status(404).render('error')

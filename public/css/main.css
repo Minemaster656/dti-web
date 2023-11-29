@@ -7,6 +7,7 @@ body{
     padding-top: 64px;
     text-align: center;
     
+    
 }
 .mirage{
     text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5;
@@ -21,3 +22,50 @@ a{
     color: #ffd6f1; /* замените #000000 на желаемый цвет текста в формате HEX или названии цвета */
     text-shadow: -1px -1px 2px #00e1ffa5, 1px 1px 2px #ff007ba5;
 }
+
+
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 400px; /* Задайте высоту ваших элементов */
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255, 255, 255, 0.16), rgba(255,255,255,0));
+    filter: blur(20px);
+    z-index: -1;
+  }
+  
+  .content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content:center; 
+    /* space between */
+    padding: 20px;
+    /* flex-direction: column; */
+    
+  }
+  
+  .content img {
+    width: 200px; /* Задайте ширину вашей картинке */
+    /* flex-direction:row; */
+    float: left;
+    margin-right: 20px;
+  }
+  
+  .content h1 {
+    font-size: 24px; /* Задайте размер вашего заголовка */
+    flex-direction: column;
+  }
+  
+  .content p {
+    font-size: 16px; /* Задайте размер ваших параграфов */
+    flex-direction: column;
+  }
