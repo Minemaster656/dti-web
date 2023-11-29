@@ -7,7 +7,7 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-const PORT = 443
+const PORT = 80
 const HOST = 'localhost' //127.0.0.1
 
 const HTML_PATH = __dirname+ '/templates/'
