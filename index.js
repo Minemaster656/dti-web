@@ -1,11 +1,18 @@
 // const http = require('http')
 const fs = require('fs')
 const express = require('express')
+
 const { compileFunction } = require('vm')
 
 const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+
+
+
+const mongoose = require('mongoose');
+
+// Подключение к MongoDB
 
 const PORT = 3003
 const HOST = 'localhost' //127.0.0.1
@@ -35,6 +42,11 @@ app.get('/employee', (req, res) => {
 app.get('*', (req, res) => {
     res.status(404).render('error')
 })
+
+
+
+
+
 
 
 app.listen(PORT, ()=>{
