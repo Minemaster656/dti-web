@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Плавающие с эффектом параллакса</title>
+  <style>
+    /* Стили для фона страницы */
+    body {
+      overflow: hidden; /* Запрещаем прокрутку страницы */
+    }
+
+    /* Стили для контейнера, который будет держать фоновые изображения */
+    .parallax-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Поместите контейнер под всеми остальными элементами */
+    }
+
+    /* Стили для фоновых изображений */
+    .parallax-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5; /* Настройте прозрачность по вашему вкусу */
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax-container"></div>
+  <!-- Здесь идут все остальные контейнеры и содержимое вашей страницы -->
+</body>
+</html>

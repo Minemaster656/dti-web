@@ -24,6 +24,10 @@ app.get('/user/:name', (req, res) => {
 })
 app.get('/projects', (req, res) => {
     res.render('projects')
+
+})
+app.get('/atk', (req, res) => {
+    res.render('atk')
 })
 app.get('/employee', (req, res) => {
     res.render('employee')
