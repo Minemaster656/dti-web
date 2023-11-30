@@ -10,7 +10,9 @@ body{
     
 }
 .mirage{
-    text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5;
+    text-shadow: 
+    -2px -2px 1px #00e1ffa5, 2px 2px 1px #ff007ba5
+    ;
 }
 a{
     color:white;
