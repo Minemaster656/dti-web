@@ -134,13 +134,17 @@ Charc.findOne({ id: inputText })
       owner: char.owner
     };
 
-    console.log("Array: ");
-    console.log(ch);
+    // console.log("Array: ");
+    // console.log(ch);
 
     if (ch==undefined){
         output= "Неверный ID. Объект: "+ch
-        console.log("ch==undefined: " + ch==undefined)}
-      
+        // console.log("ch==undefined: " + ch==undefined)
+    }
+    
+    else if (ch.name == null){
+        output = "Неверный ID."
+    }
     else
         output = `${ch.name}, ${ch.age} лет. ID: ${ch.id}, владелец - <@${ch.owner}>\n
     \nКраткое содержание:\n${ch.shortened}
