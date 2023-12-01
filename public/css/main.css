@@ -90,3 +90,6 @@ a{
   margin-right: 10%;
   margin-bottom: 16px;
 }
+div {
+  white-space: pre-line;
+}

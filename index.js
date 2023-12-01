@@ -113,34 +113,30 @@ app.post('/findCharacter', (req, res) => {
       
     //     // console.log(ch);
     //   });
-    let ch
-    Charc.findOne({ id: inputText })
-      .then((char) => {
-        // Создайте словарь (объект) с данными пользователя
-        ch = {
-            name: char.name,
-            age: char.age,
-            bodystats: char.bodystats,
-            abilities: char.abilities,
-            weaknesses: char.weaknesses,
-            character: char.character,
-            inventory: char.inventory,
-            bio: char.bio,
-            appearances: char.appearances,
-            art: char.art,
-            shortened: char.shortened,
-            id: char.id,
-            owner: char.owner
-        };
-    
-        console.log("Array: ");
-        console.log(ch);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    
-    
+    let ch;
+
+Charc.findOne({ id: inputText })
+  .then((char) => {
+    // Создайте словарь (объект) с данными персонажа
+    ch = {
+      name: char.name,
+      age: char.age,
+      bodystats: char.bodystats,
+      abilities: char.abilities,
+      weaknesses: char.weaknesses,
+      character: char.character,
+      inventory: char.inventory,
+      bio: char.bio,
+      appearances: char.appearances,
+      art: char.art,
+      shortened: char.shortened,
+      id: char.id,
+      owner: char.owner
+    };
+
+    console.log("Array: ");
+    console.log(ch);
+
     if (ch==undefined){
         output= "Неверный ID. Объект: "+ch
         console.log("ch==undefined: " + ch==undefined)}
@@ -154,12 +150,25 @@ app.post('/findCharacter', (req, res) => {
     Слабости: \n${ch.weaknesses}\n\n
     Характер: \n${ch.character}\n\n
     Внешность: \n${ch.appearances}\n\n
-    <a href="${art}">Ссылка на арт<br></a>
+    
     `
+    //<a href="${art}">Ссылка на арт<br></a>
+
+    res.json({ result: `Результат: ${output}` });
+//     const result = `Результат: ${output.replace(/\n/g, "<br>")}`;
+
+// res.json({ result });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+    
+    
+    
     // Здесь ты можешь обработать данные, например, сделать какие-то вычисления
     
     // Возвращаем результат обработки в формате JSON
-    res.json({ result: `Результат: ${output}` });
+    
   });
 
 
