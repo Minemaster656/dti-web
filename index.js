@@ -9,13 +9,40 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 
+
+// Подключение к MongoDB
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/RTB_data', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  bodystats: String,
+  abilities: String,
+  weaknesses: String,
+  character: String,
+  inventory: String,
+  bio: String,
+  appearances: String,
+  art: String,
+  shortened: String,
+  id: String,
+  owner: Number
+
+});
+const Charc = mongoose.model('characters', userSchema);
+
+
+
+
+
 // Парсер для обработки данных формы
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-const mongoose = require('mongoose');
 
-// Подключение к MongoDB
+
+
 
 const PORT = 3003
 const HOST = 'localhost' //127.0.0.1
@@ -58,11 +85,81 @@ app.get('*', (req, res) => {
 // Обработка отправки формы
 app.post('/findCharacter', (req, res) => {
     const { inputText } = req.body;
+    console.log(inputText)
     
+    // let ch = Charc.findOne({ id: inputText }).then((char) => {
+        
+      
+    //     // Создайте словарь (объект) с данными пользователя
+    //     if (char)
+    //         ch = {
+    //             name: char.name,
+    //             age: char.age,
+    //             bodystats: char.bodystats,
+    //             abilities: char.abilities,
+    //             weaknesses: char.weaknesses,
+    //             character: char.character,
+    //             inventory: char.inventory,
+    //             bio: char.bio,
+    //             appearances: char.appearances,
+    //             art: char.art,
+    //             shortened: char.shortened,
+    //             id: char.id,
+    //             owner: char.owner
+    //         };
+    //         return ch;
+        
+        
+      
+    //     // console.log(ch);
+    //   });
+    let ch
+    Charc.findOne({ id: inputText })
+      .then((char) => {
+        // Создайте словарь (объект) с данными пользователя
+        ch = {
+            name: char.name,
+            age: char.age,
+            bodystats: char.bodystats,
+            abilities: char.abilities,
+            weaknesses: char.weaknesses,
+            character: char.character,
+            inventory: char.inventory,
+            bio: char.bio,
+            appearances: char.appearances,
+            art: char.art,
+            shortened: char.shortened,
+            id: char.id,
+            owner: char.owner
+        };
+    
+        console.log("Array: ");
+        console.log(ch);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    
+    
+    if (ch==undefined){
+        output= "Неверный ID. Объект: "+ch
+        console.log("ch==undefined: " + ch==undefined)}
+      
+    else
+        output = `${ch.name}, ${ch.age} лет. ID: ${ch.id}, владелец - <@${ch.owner}>\n
+    \nКраткое содержание:\n${ch.shortened}
+    \n\nБиография:\n${ch.bio}\n\n
+    Телосложение, мир, рост, вес: ${ch.bodystats}\n\n
+    Способности: \n${ch.abilities}\n\n
+    Слабости: \n${ch.weaknesses}\n\n
+    Характер: \n${ch.character}\n\n
+    Внешность: \n${ch.appearances}\n\n
+    <a href="${art}">Ссылка на арт<br></a>
+    `
     // Здесь ты можешь обработать данные, например, сделать какие-то вычисления
     
     // Возвращаем результат обработки в формате JSON
-    res.json({ result: `Результат: ${inputText}` });
+    res.json({ result: `Результат: ${output}` });
   });
 
 
