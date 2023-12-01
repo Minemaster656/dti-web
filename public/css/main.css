@@ -22,9 +22,11 @@ m{
     ;
 }
 a{
-    color:white;
-    text-shadow: -1px -1px 1.5px #00e1ffa5, 1px 1px 1.5px #ff007ba5, 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5;
+    color:#c9e5ff;
+    text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5; /* , 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5 */
     text-decoration: underline;
+    font-weight: bolder;
+    
 }
 ::selection {
     background-color: #00e1ffa5; /* замените #ffff00 на желаемый цвет в формате HEX или названии цвета */
@@ -79,3 +81,12 @@ a{
     flex-direction: column;
   }
 
+
+.databaseSearchResult{
+  margin-top: 16px;
+  border-radius: 10px;
+  background-color: #00000028;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 16px;
+}

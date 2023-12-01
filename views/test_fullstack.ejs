@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/main.css">
+  <title>Связь фронтэнда и бэкэнда</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Обработчик события при отправке формы
+    $(document).ready(function() {
+      $('form').submit(function(e) {
+        e.preventDefault(); // Предотвращаем обычное поведение формы
+
+        // Получаем текст из поля ввода
+        const inputText = $('#inputText').val();
+
+        // Отправляем данные на бэкенд
+        $.post('/findCharacter', { inputText }, function(data) {
+          // Обновляем div контейнер с результатом
+          $('#result').text(data.result);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Пример связи фронтэнда и бэкэнда с Express.js и EJS</h1>
+  <form>
+    <input type="text" id="inputText" placeholder="Введите текст">
+    <button type="submit">Отправить</button>
+  </form>
+  <div id="result"></div>
+</body>
+</html>

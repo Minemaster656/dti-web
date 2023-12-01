@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATK | База данных</title>
+    
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+
+    <script>
+        // Обработчик события при отправке формы
+        $(document).ready(function() {
+          $('form').submit(function(e) {
+            e.preventDefault(); // Предотвращаем обычное поведение формы
+    
+            // Получаем текст из поля ввода
+            const inputText = $('#inputText').val();
+    
+            // Отправляем данные на бэкенд
+            $.post('/findCharacter', { inputText }, function(data) {
+              // Обновляем div контейнер с результатом
+              $('#result').text(data.result);
+            });
+          });
+        });
+      </script>
+</head>
+<body>
+    <h1 class="mirage">ATK | База данных</h1>
+    <p>Поиск по базе данных</p>
+    
+    <a href="/atk">Обратно на страницу АТК<br></a>
+    <a href="/">Обратно на Главную страницу<br></a>
+    
+
+
+    <p>Поиск по Базе Данных <m>в процессе разработки</m></p>
+
+    <form>
+        <input class="search" type="text" id="inputText" placeholder="Введите ID">
+        <button type="submit">Поиск</button>
+      </form>
+    <div id="result" class="databaseSearchResult"></div>
+    
+
+
+</body>
+</html>
