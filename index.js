@@ -85,77 +85,56 @@ app.get('*', (req, res) => {
 // Обработка отправки формы
 app.post('/findCharacter', (req, res) => {
     const { inputText } = req.body;
-    console.log(inputText)
+    // console.log(inputText)
     
-    // let ch = Charc.findOne({ id: inputText }).then((char) => {
-        
-      
-    //     // Создайте словарь (объект) с данными пользователя
-    //     if (char)
-    //         ch = {
-    //             name: char.name,
-    //             age: char.age,
-    //             bodystats: char.bodystats,
-    //             abilities: char.abilities,
-    //             weaknesses: char.weaknesses,
-    //             character: char.character,
-    //             inventory: char.inventory,
-    //             bio: char.bio,
-    //             appearances: char.appearances,
-    //             art: char.art,
-    //             shortened: char.shortened,
-    //             id: char.id,
-    //             owner: char.owner
-    //         };
-    //         return ch;
-        
-        
-      
-    //     // console.log(ch);
-    //   });
+    
     let ch;
 
 Charc.findOne({ id: inputText })
   .then((char) => {
     // Создайте словарь (объект) с данными персонажа
-    ch = {
-      name: char.name,
-      age: char.age,
-      bodystats: char.bodystats,
-      abilities: char.abilities,
-      weaknesses: char.weaknesses,
-      character: char.character,
-      inventory: char.inventory,
-      bio: char.bio,
-      appearances: char.appearances,
-      art: char.art,
-      shortened: char.shortened,
-      id: char.id,
-      owner: char.owner
-    };
+    
 
     // console.log("Array: ");
     // console.log(ch);
 
-    if (ch==undefined){
-        output= "Неверный ID. Объект: "+ch
-        // console.log("ch==undefined: " + ch==undefined)
-    }
-    
-    else if (ch.name == null){
+    try {
+        ch = {
+            name: char.name,
+            age: char.age,
+            bodystats: char.bodystats,
+            abilities: char.abilities,
+            weaknesses: char.weaknesses,
+            character: char.character,
+            inventory: char.inventory,
+            bio: char.bio,
+            appearances: char.appearances,
+            art: char.art,
+            shortened: char.shortened,
+            id: char.id,
+            owner: char.owner
+          };
+        if (ch==undefined){
+            output= "Неверный ID. Объект: "+ch
+            // console.log("ch==undefined: " + ch==undefined)
+        }
+        
+        
+        else
+            output = `${ch.name}, ${ch.age} лет. ID: ${ch.id}, владелец - <@${ch.owner}>\n
+        \nКраткое содержание:\n${ch.shortened}
+        \n\nБиография:\n${ch.bio}\n\n
+        Телосложение, мир, рост, вес: ${ch.bodystats}\n\n
+        Способности: \n${ch.abilities}\n\n
+        Слабости: \n${ch.weaknesses}\n\n
+        Характер: \n${ch.character}\n\n
+        Внешность: \n${ch.appearances}\n\n
+        
+        `
+    } catch (error) {
         output = "Неверный ID."
     }
-    else
-        output = `${ch.name}, ${ch.age} лет. ID: ${ch.id}, владелец - <@${ch.owner}>\n
-    \nКраткое содержание:\n${ch.shortened}
-    \n\nБиография:\n${ch.bio}\n\n
-    Телосложение, мир, рост, вес: ${ch.bodystats}\n\n
-    Способности: \n${ch.abilities}\n\n
-    Слабости: \n${ch.weaknesses}\n\n
-    Характер: \n${ch.character}\n\n
-    Внешность: \n${ch.appearances}\n\n
     
-    `
     //<a href="${art}">Ссылка на арт<br></a>
 
     res.json({ result: `Результат: ${output}` });
