@@ -137,7 +137,7 @@ Charc.findOne({ id: inputText })
     
     //<a href="${art}">Ссылка на арт<br></a>
 
-    res.json({ result: `Результат: ${output}` });
+    res.json({ result: `${output}` });
 //     const result = `Результат: ${output.replace(/\n/g, "<br>")}`;
 
 // res.json({ result });
