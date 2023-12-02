@@ -103,6 +103,8 @@ div {
 html{
   height: 100%;
   overflow:visible;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 body{
   margin: 0;
