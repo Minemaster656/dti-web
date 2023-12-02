@@ -1,0 +1,69 @@
+.emp {
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+  }
+  
+  .img img {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 200px; /* Ensure the width adjusts to fit the image proportionally */
+    max-height: 200px; /* Limit the height to fit within the container */
+
+  }
+  
+  .texts {
+    margin: 10px;
+    text-align: left;
+  }
+  p{
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+  }
+  h1, h2{
+    margin-top: 6px;
+    margin-bottom: 3px;
+  }
+  #test {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #minemaster {
+    background: linear-gradient(135deg, #00c4ff, #3381f5);
+  }
+  #pavelg {
+    background: linear-gradient(135deg, #4d0d0d, #240606);
+  }
+  #codeislife {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #googer {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #michaclownai {
+    background: linear-gradient(135deg, #0e298a, #2753f2);
+  }
+  #sina {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #poyo {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #lievsey {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #p4elik {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #mirilat {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+  #chrmh {
+    background: linear-gradient(135deg, #0f88fa7c, #cb0ffa7c);
+  }
+
