@@ -1,0 +1,14 @@
+.bg-image {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  @keyframes shift-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }

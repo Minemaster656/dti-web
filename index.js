@@ -72,8 +72,8 @@ app.get('/atk/database', (req, res) => {
 app.get('/employee', (req, res) => {
     res.render('employee')
 })
-app.get('/fullstack', (req, res) => {
-    res.render('test_fullstack')
+app.get('/test', (req, res) => {
+    res.render('deco_test')
 })
 app.get('/content', (req, res) => {
     res.render('content')

@@ -93,3 +93,37 @@ a{
 div {
   white-space: pre-line;
 }
+.field{
+  border-radius: 10px;
+  background-color: #00000028;
+  margin-left: 16%;
+  margin-right: 16%;
+  
+}
+html{
+  height: 100%;
+  overflow:visible;
+}
+body{
+  margin: 0;
+  padding: 0;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #3e4854;
+  border-radius: 10px;
+  box-shadow: 5px 0px 5px -5px rgba(255, 255, 255, 0.26) inset;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgb(65, 147, 225), rgb(199, 89, 162));
+}
