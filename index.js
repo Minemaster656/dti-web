@@ -78,6 +78,12 @@ app.get('/test', (req, res) => {
 app.get('/content', (req, res) => {
     res.render('content')
 })
+app.get('/docs', (req, res) => {
+    res.render('docs')
+})
+app.get('/docs/MnL', (req, res) => {
+    res.render('doc_MnL')
+})
 app.get('*', (req, res) => {
     res.status(404).render('error')
 })
