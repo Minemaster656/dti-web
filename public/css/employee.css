@@ -15,6 +15,8 @@
     margin-bottom: 10px;
     width: 200px; /* Ensure the width adjusts to fit the image proportionally */
     max-height: 200px; /* Limit the height to fit within the container */
+    box-shadow: 1px 1px 2px #ff007ba5, -1px -1px 2px #00e1ffa5;
+    
 
   }
   
