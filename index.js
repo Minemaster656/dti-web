@@ -3,9 +3,15 @@ const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser');
 const { compileFunction } = require('vm')
+// const multer = require('multer'); // Для обработки загрузки файлов
+// const sharp = require('sharp'); // Для обработки изображений
+const path = require('path');
 
 const app = express()
 app.set('view engine', 'ejs')
+// const upload = multer({
+//     dest: 'uploads/' // Папка, куда будут сохраняться загруженные файлы
+//   });
 app.use(express.static('public'))
 
 
@@ -86,7 +92,10 @@ app.get('/docs/MnL', (req, res) => {
 })
 app.get('/games/td', (req, res) => {
     res.render('browsertd')
+    
 })
+app.get('/imager', (req, res) => {
+    res.render('imageProcessing')})
 app.get('*', (req, res) => {
     res.status(404).render('error')
 })
