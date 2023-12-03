@@ -88,6 +88,9 @@ app.get('*', (req, res) => {
     res.status(404).render('error')
 })
 
+
+
+// AJAX AJAX AJAX AJAX AJAX AJAX AJAX
 // Обработка отправки формы
 app.post('/findCharacter', (req, res) => {
     const { inputText } = req.body;
@@ -163,6 +166,24 @@ Charc.findOne({ id: inputText })
 
 
 
+
+
+
+// API API API API API API API
+app.get('/api/memes/any', (req, res) => {
+    const folderPath = path.join(__dirname, '/public/api/memes/any/');
+    fs.readdir(folderPath, (err, files) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Ошибка сервера' });
+      }
+  
+      const randomIndex = Math.floor(Math.random() * files.length);
+      const randomFile = files[randomIndex];
+  
+      res.sendFile(path.join(folderPath, randomFile));
+    });
+  });
 
 app.listen(PORT, ()=>{
     console.log(`Сервер запущен по адресу http://${HOST}:${PORT}`)
