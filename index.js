@@ -84,6 +84,9 @@ app.get('/docs', (req, res) => {
 app.get('/docs/MnL', (req, res) => {
     res.render('doc_MnL')
 })
+app.get('/games/td', (req, res) => {
+    res.render('browsertd')
+})
 app.get('*', (req, res) => {
     res.status(404).render('error')
 })
