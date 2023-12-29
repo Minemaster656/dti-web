@@ -50,7 +50,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-const PORT = 3003
+const PORT = 3004
 const HOST = 'localhost' //127.0.0.1
 
 const HTML_PATH = __dirname+ '/templates/'
@@ -198,7 +198,7 @@ app.get('/api/memes/any', (req, res) => {
   });
 
 app.listen(PORT, ()=>{
-    console.log(`Сервер запущен по адресу http://${HOST}:${PORT}`)
+    console.log(`Сервер запущен по адресу http(s)://${HOST}:${PORT}`)
 
 
 })
