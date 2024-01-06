@@ -28,8 +28,31 @@
           });
         });
       </script>
+  <script>
+    function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+  </script>
 </head>
 <body>
+
   <div id="page" style="display: none;">
     <h1 class="mirage">ATK | База данных</h1>
     <p>Поиск по базе данных</p>
@@ -40,13 +63,35 @@
 
 
     <p>Поиск по Базе Данных <m>в процессе разработки</m></p>
+      <div class="tabs">
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Check')">Просмотр</button>
+          <button class="tablinks" onclick="openTab(event, 'Search')"><img src="/assets/working.png" class="emoji">Поиск</button>
+          <button class="tablinks" onclick="openTab(event, 'Register')">Регистрация</button>
+        </div>
+        
+        <div id="Check" class="tabcontent">
+          <form>
+            <input class="search" type="text" id="inputText" placeholder="Введите ID">
+            <button type="submit">Поиск</button>
+          </form>
+        <div id="result" class="databaseSearchResult"></div>
+        </div>
+        
+        <div id="Search" class="tabcontent">
+          
+        </div>
+        
+        <div id="Register" class="tabcontent">
+          <a href="/atk/register">Конструктор анкет</a>
+          <p>Для завершения регистрации, отправьте скачанный файл в Discord и используйте команду приложения "Распарсить анкету персонажа" в боте Какой-то бот</p>
+          
 
-    <form>
-        <input class="search" type="text" id="inputText" placeholder="Введите ID">
-        <button type="submit">Поиск</button>
-      </form>
-    <div id="result" class="databaseSearchResult"></div>
-    
+        </div>
+
+        
+        
+    </div>
   </div>
 
 </body>

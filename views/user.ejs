@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTI website</title>
-    <style>
+    <title><%= name %></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <script src="/js/main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script><script>SmoothScroll({animationTime : 800,stepSize : 75,accelerationDelta : 30,accelerationMax : 2,keyboardSupport : true,arrowScroll : 50,pulseAlgorithm : true,pulseScale : 4,pulseNormalize : 1,touchpadSupport : true,})</script>
+    <script>console.log("Imports complete!")</script>
+    <!-- <style>
         body{
             color: #f4ffff;
             text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5;
@@ -16,17 +23,66 @@
             
         }
         
-    </style>
+    </style> -->
     
 </head>
 <body>
-    <h1>DTI</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci molestiae sequi, qui eius molestias libero sint inventore ab dolorum magni architecto autem fuga possimus accusamus. Eius, molestiae vitae? Debitis!</p>
-    <a href="/about">Про нас</a>
-    <p>User: <%= name %></p>
-    <% if(name.toLowerCase()=='user') { %>
-    <p>test</p>
-    <% } %>
+
+    
+
+    <% function calc_levelByXP(xp) {
+        const DIFFICULTY = 1.6;
+        let level = Math.floor(Math.log((xp * (DIFFICULTY-1) / 100) + 1) / Math.log(DIFFICULTY));
+        let xp_current = Math.round(xp - ((100 * (Math.pow(DIFFICULTY, level - 1) - 1)) / (DIFFICULTY-1)));
+        let xp_next = Math.round(100 * (Math.pow(DIFFICULTY, level - 1)));
+        return [level, xp_current, xp_next];
+      }
+    
+      function calc_xpBarValue(xp) {
+        let xps = calc_levelByXP(xp);
+        return (xps[1] / xps[2]) * 100;
+      }
+    
+      function calc_xpLevel(xp) {
+        let xps = calc_levelByXP(xp);
+        return xps[0];
+      } %>
+
+
+
+    <div id="page" style="display: none;">
+        <a href="/">На главную</a>
+        <p></p>
+        <div class="userProfile">
+            <h1><m><%= name %></m></h1>
+
+
+
+
+            <% 
+                let progress = calc_xpBarValue(xp)
+                let xp_current = calc_levelByXP(xp)[1]
+                let xp_next = calc_levelByXP(xp)[2]
+                let level = calc_levelByXP(xp)[0]
+            
+            %>
+            <div class="progress-container">
+                
+                    <div class="progress-bar" style="width: <%= progress-100 %>%;"></div>
+                
+              </div>
+              <div class="progress-text">
+                <span><%= xp %> | <%= (progress-100).toFixed(2) %>%</span> 
+                <!-- TODO: ОТКУДА ТУТ 63!? А!? -->
+                <span><%= level %></span>
+              </div>
+        
+        </div>
+        <p>User: <%= name %></p>
+        <% if(name.toLowerCase()=='user') { %>
+        <p>test</p>
+        <% } %>
+    </div>
     
 </body>
 </html>

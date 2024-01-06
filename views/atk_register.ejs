@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор анкеты</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <script src="/js/main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script><script>SmoothScroll({animationTime : 800,stepSize : 75,accelerationDelta : 30,accelerationMax : 2,keyboardSupport : true,arrowScroll : 50,pulseAlgorithm : true,pulseScale : 4,pulseNormalize : 1,touchpadSupport : true,})</script>
+    <style>
+    </style>
+    
+</head>
+<body>
+    <script src="libs/jquery-3.7.1.min.js"></script>
+    <div id="page" style="display: none;">
+        <h1 class="mirage">ATK | Конструктор анкет</h1>
+    <a href="/">На главную<br></a>
+
+    <div id="fields">
+        <div class="field">
+          <label for="name">Имя персонажа</label>
+          <textarea type="text" id="name" placeholder="Имя персонажа" class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="bodystats">Рост, вес, телосложение, родной мир</label>
+          <textarea type="text" id="bodystats" placeholder="..." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        
+        <div class="field">
+          <label for="age">Возраст в годах</label>
+          <textarea type="text" id="age" pattern="[0-9]+(.[0-9]+)?" placeholder="Число" class="input-resizable"></textarea>
+          <span class="error">ТУТ РАЗРЕШЕНЫ ТОЛЬКО ЧИСЛА!!!</span>
+        </div>
+        <div class="field">
+          <label for="abilities">Способности</label>
+          <textarea type="text" id="abilities" placeholder="..." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="weaknesses">Слабости</label>
+          <textarea type="text" id="weaknesses" placeholder="..." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="character">Характер</label>
+          <textarea type="text" id="character" placeholder="Пишите нормально, пожалуйста. Желательно больше чем 2-3 слова." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="inventory">Инвентарь</label>
+          <textarea type="text" id="inventory" placeholder="Если пусто, впишите просто пробел, ничего, Undefined или что-нибудь ещё." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+
+        <div class="field">
+          <label for="bio">Биография</label>
+          <textarea type="text" id="bio" placeholder="..." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="appearances">Внешность</label>
+          <textarea type="text" id="appearances" placeholder="..." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="art">Ссылка на арт</label>
+          <textarea type="text" id="art" placeholder="ССЫЛКА ДОЛЖНА БЫТЬ РАБОЧЕЙ И НАЧИНАТЬСЯ С http(s)://
+Если арта нет - оставьте пустым. НЕ ВВОДИТЕ НЕСКОЛЬКО ССЫЛОК ЗА РАЗ!!!
+Если используете ссылку на вложение в Discord, удалите ? и всё, что идёт за ним для экономии места. Спасибо." class="input-resizable" pattern="https?://.+"></textarea>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="shortened">Краткий пересказ</label>
+          <textarea type="text" id="shortened" placeholder="Не обязателен. Если хотите, можете использовать как дополнительное поле." class="input-resizable"></textarea>
+          <span class="error"></span>
+        </div>
+
+        <div class="field">
+          <label for="id">ID персонажа. (Только английские буквы и нижние подчёркивания!)</label>
+          <textarea type="text" id="id" pattern="[A-Za-z_0-9]+" placeholder="ID персонажа" class="input-resizable"></textarea>
+          <span class="error">Разрешены только English буквы и нижние _ подчёркивания _!!!</span>
+        </div>
+      </div>
+    
+      <button id="download-btn">Скачать JSON</button>
+      <button id="upload-btn">Загрузить JSON</button>
+    
+      <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+      <script src="/js/blank_constructor.js"></script>
+
+    
+     
+    
+    
+
+    
+    </div>
+</body>
+</html>

@@ -62,8 +62,8 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about')
 })
-app.get('/user/:name', (req, res) => {
-    res.render(`user`, {name : req.params.name})
+app.get('/user/:name/:xp', (req, res) => {
+    res.render(`user`, {name : req.params.name, xp:req.params.xp})
 })
 app.get('/projects', (req, res) => {
     res.render('projects')
@@ -71,6 +71,9 @@ app.get('/projects', (req, res) => {
 })
 app.get('/atk', (req, res) => {
     res.render('atk')
+})
+app.get('/atk/register', (req, res) => {
+    res.render('atk_register')
 })
 app.get('/atk/database', (req, res) => {
     res.render('atk_database')

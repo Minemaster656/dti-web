@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitched Dev Team | Главная</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <script src="/js/main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script><script>SmoothScroll({animationTime : 800,stepSize : 75,accelerationDelta : 30,accelerationMax : 2,keyboardSupport : true,arrowScroll : 50,pulseAlgorithm : true,pulseScale : 4,pulseNormalize : 1,touchpadSupport : true,})</script>
+    
+    
+</head>
+<body>
+    <script src="libs/jquery-3.7.1.min.js"></script>
+    <div id="page" style="display: none;">
+    
+    <a href="/">На главную<br></a>
+    <div>
+        <div class="input-container">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="input-container">
+            <label for="bodystats">Body Stats:</label>
+            <input type="text" id="bodystats" name="bodystats">
+        </div>
+        <div class="input-container">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age">
+        </div>
+        <div class="input-container">
+            <label for="abilities">Abilities:</label>
+            <input type="text" id="abilities" name="abilities">
+        </div>
+        <div class="input-container">
+            <label for="weaknesses">Weaknesses:</label>
+            <input type="text" id="weaknesses" name="weaknesses">
+        </div>
+        <div class="input-container">
+            <label for="character">Character:</label>
+            <input type="text" id="character" name="character">
+        </div>
+        <div class="input-container">
+            <label for="inventory">Inventory:</label>
+            <input type="text" id="inventory" name="inventory">
+        </div>
+        <div class="input-container">
+            <label for="bio">Bio:</label>
+            <input type="text" id="bio" name="bio">
+        </div>
+        <div class="input-container">
+            <label for="appearances">Appearances:</label>
+            <input type="text" id="appearances" name="appearances">
+        </div>
+        <div class="input-container">
+            <label for="art">Art:</label>
+            <input type="text" id="art" name="art">
+        </div>
+        <div class="input-container">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id">
+        </div>
+        <button id="downloadBtn">Download JSON</button>
+        <input type="file" id="uploadBtn" accept=".json" style="display: none;">
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Disable comma and replace it with a dot for the age field
+            $('#age').on('input', function() {
+                var value = $(this).val();
+                value = value.replace(/,/g, '.');
+                $(this).val(value);
+            });
+
+            // Validate and sanitize the id field
+            $('#id').on('input', function() {
+                var value = $(this).val();
+                value = value.replace(/[^a-zA-Z_]/g, '');
+                $(this).val(value);
+            });
+
+            // JSON download button click handler
+            $('#downloadBtn').on('click', function() {
+                var data = {};
+                $('.input-container input').each(function() {
+                    var id = $(this).attr('id');
+                    var value = $(this).val();
+                    // Convert age field value to a number if valid
+                    if (id === 'age') {
+                        value = parseFloat(value);
+                    }
+                    data[id] = value;
+                });
+                var jsonData = JSON.stringify(data);
+                var blob = new Blob([jsonData], {type: "application/json"});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement("a");
+                a.href = url;
+                a.download = "data.json";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
+            // JSON upload button change handler
+            $('#uploadBtn').on('change', function(e) {
+                var file = e.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            var jsonData = JSON.parse(e.target.result);
+                            $('.input-container input').each(function() {
+                                var id = $(this).attr('id');
+                                if (jsonData.hasOwnProperty(id)) {
+                                    var value = jsonData[id];
+                                    if (id === 'age') {
+                                        // Convert age field value to a string
+                                        if (typeof value === 'number') {
+                                            value = value.toString();
+                                        }
+                                        // Replace dot with comma for display
+                                        value = value.replace(/\./g, ',');
+                                    }
+                                    $(this).val(value);
+                                    // Apply validation for the id field
+                                    if (id === 'id' && !(/^[a-zA-Z_]+$/.test(value) && !value.endsWith('$temp'))) {
+                                        $(this).addClass('error');
+                                    } else {
+                                        $(this).removeClass('error');
+                                    }
+                                }
+                            });
+                            $('.input-container .error').removeClass('error');
+                            alert('JSON data successfully loaded!');
+                        } catch (error) {
+                            alert('Invalid JSON file!');
+                            console.error(error);
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            });
+
+            // Load JSON file button click handler
+            $('#uploadBtn').on('click', function() {
+                this.value = null;
+            });
+
+            // Listen for changes in the id field and highlight errors
+            $('#id').on('input', function() {
+                var value = $(this).val();
+                if (!(/^[a-zA-Z_]+$/.test(value) && !value.endsWith('$temp'))) {
+                    $(this).addClass('error');
+                } else {
+                    $(this).removeClass('error');
+                }
+            });
+        });
+    </script>
+
+    
+     
+    
+    
+
+    
+    </div>
+</body>
+</html>
