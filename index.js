@@ -13,12 +13,11 @@ app.set('view engine', 'ejs')
 //     dest: 'uploads/' // Папка, куда будут сохраняться загруженные файлы
 //   });
 app.use(express.static('public'))
-
-
-
+var secretdata = fs.readFileSync('secretdata.txt').toString().split("\n");
 // Подключение к MongoDB
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/RTB_data', { useNewUrlParser: true, useUnifiedTopology: true });
+console.log(`mongodb://${secretdata[0]}:${secretdata[1]}@glitchdev.ru:27017/RTB_data`)
+mongoose.connect(`mongodb://${secretdata[0]}:${secretdata[1]}@glitchdev.ru:27017/RTB_data`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
   name: String,
