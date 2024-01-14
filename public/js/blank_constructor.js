@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
     $('#download-btn').click(function() {
       var data = {};
   
@@ -19,7 +20,7 @@ $(document).ready(function() {
   
       var a = document.createElement('a');
       a.href = url;
-      a.download = 'blank.json';
+      a.download = `blank_${data["id"]}.json`;
       a.click();
     });
   
