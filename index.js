@@ -55,9 +55,33 @@ const HOST = 'localhost' //127.0.0.1
 const HTML_PATH = __dirname+ '/templates/'
 
 
+
+
 app.get('/', (req, res) => {
     res.render('index')
 })
+
+app.get('/datahold/:doc', (req, res) => {
+    const doc = req.params.doc;
+    const filePath = path.join(__dirname, 'views', 'datahold', `${doc}.ejs`);
+    console.log(filePath + " ");
+    console.log("PATH");
+    // Check if the file exists
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        // Render error.ejs if the file or directory doesn't exist
+        res.render('error');
+        console.log("ERROR");
+        console.log(err+" ");
+      } else {
+        // Render the file if it exists
+        res.render(`datahold/${doc}`);
+      }
+    });
+  });
+
+
+
 app.get('/about', (req, res) => {
     res.render('about')
 })
@@ -101,6 +125,10 @@ app.get('/imager', (req, res) => {
 app.get('*', (req, res) => {
     res.status(404).render('error')
 })
+
+
+
+  
 
 
 
