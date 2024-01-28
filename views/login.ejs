@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitched Dev Team | Главная</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <script src="/js/main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script><script>SmoothScroll({animationTime : 800,stepSize : 75,accelerationDelta : 30,accelerationMax : 2,keyboardSupport : true,arrowScroll : 50,pulseAlgorithm : true,pulseScale : 4,pulseNormalize : 1,touchpadSupport : true,})</script>
+    
+    
+</head>
+<body>
+    <script src="libs/jquery-3.7.1.min.js"></script>
+    <div id="page" style="display: none;">
+    
+    <a href="/">На главную<br></a>
+    <a id="login" style="display: none;" href="https://discord.com/api/oauth2/authorize?client_id=1180837144915357716&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A53134&scope=identify">Identify Yourself</a>
+    <script>
+	window.onload = () => {
+		const fragment = new URLSearchParams(window.location.hash.slice(1));
+		const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+
+		if (!accessToken) {
+			return (document.getElementById('login').style.display = 'block');
+		}
+
+		fetch('https://discord.com/api/users/@me', {
+			headers: {
+				authorization: `${tokenType} ${accessToken}`,
+			},
+		})
+			.then(result => result.json())
+			.then(response => {
+				const { username, discriminator } = response;
+                console.log(response);
+				document.getElementById('info').innerText += ` ${username}#${discriminator}`;
+			})
+			.catch(console.error);
+	};
+</script>
+
+    
+     
+    
+    
+
+    
+    </div>
+</body>
+</html>

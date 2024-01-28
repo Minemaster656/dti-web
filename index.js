@@ -1,11 +1,15 @@
 // const http = require('http')
 const fs = require('fs')
+require('dotenv').config();
+const axios = require('axios')
 const express = require('express')
 const bodyParser = require('body-parser');
 const { compileFunction } = require('vm')
 // const multer = require('multer'); // Для обработки загрузки файлов
 // const sharp = require('sharp'); // Для обработки изображений
 const path = require('path');
+const { port } = require('./private-config.json');
+
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -53,7 +57,7 @@ const PORT = 3004
 const HOST = 'localhost' //127.0.0.1
 
 const HTML_PATH = __dirname+ '/templates/'
-
+const router = new express.Router()
 
 
 
@@ -84,6 +88,12 @@ app.get('/datahold/:doc', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about')
+})
+app.get('/EULA', (req, res) => {
+  res.render('EULA')
+})
+app.get('/login', (req, res) => {
+  res.render('login')
 })
 app.get('/user/:name/:xp', (req, res) => {
     res.render(`user`, {name : req.params.name, xp:req.params.xp})
@@ -127,6 +137,28 @@ app.get('*', (req, res) => {
 })
 
 
+//TODO: доделать
+router.get('/auth/discord/login', async ctx =>{
+  // const url = ''
+  const url = 'https://discord.com/api/oauth2/authorize?client_id=1180837144915357716&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3004%2Fauth%2Fdiscord%2Fcallback&scope=identify';
+  ctx.redirect(url);
+})
+router.get('/auth/discord/callback', async ctx=>{
+  if (!ctx.query.code) throw new Error('Code not provided.')
+  const {code}=ctx.query
+  const params = new URLSearchParams({
+    client_id:process.env.DISCORD_CLIENT_ID,
+    client_secret: process.env.DISCORD_CLIENT_SECRET,
+    grant_type:'authorization_code',
+    code, redirect_uri:process.env.DISCORD_REDIRECT_URI
+  })
+  const headers = {
+    'Content-Type':'application/x-www-form-urlencoded',
+    'Accapt-Encoding': 'application/x-www-form-urlencoded'
+  }
+  const response = await axios.post('http://discord.com/api/oauth2/token', params, {headers})
+  ctx.body =response.data;
+})
 
   
 

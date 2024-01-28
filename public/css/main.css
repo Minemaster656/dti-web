@@ -9,6 +9,16 @@ body{
     text-align: center;
     /* cursor: url("assets/cursor.png"), auto; */
 
+    /* background: rgb(62,50,61);
+    background: linear-gradient(332deg, rgba(62,50,61,1) 0%, rgba(67,91,111,1) 100%); */
+
+    /* background: rgb(62,53,64);
+    background: linear-gradient(332deg, rgba(62,53,64,1) 0%, rgba(73,88,97,1) 100%); */
+
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     
     
 }
