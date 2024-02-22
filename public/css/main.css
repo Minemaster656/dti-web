@@ -1,56 +1,60 @@
-body{
-    color: #f4ffff;
-    
-    filter: none;
-    background-color: #353b40;
-    /* background: linear-gradient(180deg, #353b40, #202930); */
-    font-family:Arial, Helvetica, sans-serif;
-    padding-top: 64px;
-    text-align: center;
-    /* cursor: url("assets/cursor.png"), auto; */
+body {
+  color: #f4ffff;
 
-    /* background: rgb(62,50,61);
+  filter: none;
+  background-color: #353b40;
+  /* background: linear-gradient(180deg, #353b40, #202930); */
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 64px;
+  text-align: center;
+  /* cursor: url("assets/cursor.png"), auto; */
+
+  /* background: rgb(62,50,61);
     background: linear-gradient(332deg, rgba(62,50,61,1) 0%, rgba(67,91,111,1) 100%); */
 
-    /* background: rgb(62,53,64);
+  /* background: rgb(62,53,64);
     background: linear-gradient(332deg, rgba(62,53,64,1) 0%, rgba(73,88,97,1) 100%); */
 
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    
-    
+
+
 }
-.mirage{
-    text-shadow: 
+
+.mirage {
+  text-shadow:
     -2px -2px 1px #00e1ffa5, 2px 2px 1px #ff007ba5;
-    box-shadow: 1px 1px 2px #ff007ba5, -1px -1px 2px #00e1ffa5;
+  box-shadow: 1px 1px 2px #ff007ba5, -1px -1px 2px #00e1ffa5;
 }
-m{
-  text-shadow: 
-    -2px -2px 1px #00e1ffa5, 2px 2px 1px #ff007ba5
-    ;
+
+m {
+  text-shadow:
+    -2px -2px 1px #00e1ffa5, 2px 2px 1px #ff007ba5;
 }
-a{
-    color:#c9e5ff;
-    text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5; /* , 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5 */
-    text-decoration: underline;
-    font-weight: bolder;
-    
-    
+
+a {
+  color: #c9e5ff;
+  text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5;
+  /* , 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5 */
+  text-decoration: underline;
+  font-weight: bolder;
+
+
 }
-a:hover{
+
+a:hover {
   /* color:#c9e5ff; */
-  text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5
-  -1px 1px 2px #00e1ffa5, 1px -1px 2px #ff007ba5
-  ; /* , 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5 */
+  text-shadow: -1px -1px 1px #00e1ffa5, 1px 1px 1px #ff007ba5 -1px 1px 2px #00e1ffa5, 1px -1px 2px #ff007ba5;
+  /* , 1px -1px 0.5px #00ff2aa5, -1px 1px 0.5px #ffd500a5 */
   /* text-decoration:underline; */
   font-weight: bolder;
-  
 
-  
+
+
 }
+
 a {
   display: inline-block;
   position: relative;
@@ -74,61 +78,68 @@ a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
 ::selection {
-    background-color: #00e1ffa5; /* замените #ffff00 на желаемый цвет в формате HEX или названии цвета */
-    color: #ffd6f1; /* замените #000000 на желаемый цвет текста в формате HEX или названии цвета */
-    text-shadow: -1px -1px 2px #00e1ffa5, 1px 1px 2px #ff007ba5;
+  background-color: #00e1ffa5;
+  /* замените #ffff00 на желаемый цвет в формате HEX или названии цвета */
+  color: #ffd6f1;
+  /* замените #000000 на желаемый цвет текста в формате HEX или названии цвета */
+  text-shadow: -1px -1px 2px #00e1ffa5, 1px 1px 2px #ff007ba5;
 }
 
 
 .container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 400px; /* Задайте высоту ваших элементов */
-  }
-  
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255, 255, 255, 0.16), rgba(255,255,255,0));
-    filter: blur(20px);
-    z-index: -1;
-  }
-  
-  .content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content:center; 
-    /* space between */
-    padding: 20px;
-    /* flex-direction: column; */
-    
-  }
-  
-  .content img {
-    width: 200px; /* Задайте ширину вашей картинке */
-    /* flex-direction:row; */
-    float: left;
-    margin-right: 20px;
-  }
-  
-  .content h1 {
-    font-size: 24px; /* Задайте размер вашего заголовка */
-    flex-direction: column;
-  }
-  
-  .content p {
-    font-size: 16px; /* Задайте размер ваших параграфов */
-    flex-direction: column;
-  }
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+  /* Задайте высоту ваших элементов */
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* space between */
+  padding: 20px;
+  /* flex-direction: column; */
+
+}
+
+.content img {
+  width: 200px;
+  /* Задайте ширину вашей картинке */
+  /* flex-direction:row; */
+  float: left;
+  margin-right: 20px;
+}
+
+.content h1 {
+  font-size: 24px;
+  /* Задайте размер вашего заголовка */
+  flex-direction: column;
+}
+
+.content p {
+  font-size: 16px;
+  /* Задайте размер ваших параграфов */
+  flex-direction: column;
+}
 
 
-.databaseSearchResult{
+.databaseSearchResult {
   margin-top: 16px;
   border-radius: 10px;
   background-color: #00000028;
@@ -136,7 +147,8 @@ a:hover::after {
   margin-right: 10%;
   margin-bottom: 16px;
 }
-.userProfile{
+
+.userProfile {
   margin-top: 16px;
   border-radius: 10px;
   background-color: #00000028;
@@ -144,24 +156,28 @@ a:hover::after {
   margin-right: 10%;
   margin-bottom: 16px;
 }
+
 div {
   white-space: pre-line;
 }
-.field{
+
+.field {
   border-radius: 10px;
   background-color: #00000028;
   margin-left: 16%;
   margin-right: 16%;
-  
+
 }
-html{
+
+html {
   height: 100%;
-  overflow:visible;
+  overflow: visible;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
-  
+
 }
-body{
+
+body {
   margin: 0;
   padding: 0;
   perspective: 1px;
@@ -192,10 +208,11 @@ body{
   background-color: #f5f5f5;
   border-radius: 10px;
   margin-top: 10px;
-  display:flex;
-  
+  display: flex;
+
 }
-.emoji{
+
+.emoji {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -246,7 +263,7 @@ body{
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-  background-color:#b8cae591;
+  background-color: #b8cae591;
 }
 
 /* Style the tab content */
@@ -258,21 +275,25 @@ body{
   border-left: none;
   height: 300px;
 }
-.tabs{
-  margin-left: 10px;margin-right: 10px;
+
+.tabs {
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   background: #a6b3bd15;
   border-radius: 3px;
 }
-.error{
+
+.error {
   color: red;
   text-decoration: underline;
   font-weight: bolder;
 }
+
 /* input{
   
 } */
-.input-resizable{
+.input-resizable {
   /* background-color: transparent; 
 	
 	line-height: 28px;
@@ -305,13 +326,13 @@ body{
   width: calc(100% - 2*10px);
   height: calc(100% - 2*10px);
   margin: npx;
-  resize:both;
+  resize: both;
 }
-textarea{
+
+textarea {
   background: #00000028;
   border: #00e1ffa5;
   color: #f4ffff;
   font-family: sans-serif;
   font-size: 18;
 }
-

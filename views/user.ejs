@@ -59,23 +59,7 @@
 
 
 
-            <% 
-                let progress = calc_xpBarValue(xp)
-                let xp_current = calc_levelByXP(xp)[1]
-                let xp_next = calc_levelByXP(xp)[2]
-                let level = calc_levelByXP(xp)[0]
             
-            %>
-            <div class="progress-container">
-                
-                    <div class="progress-bar" style="width: <%= progress-100 %>%;"></div>
-                
-              </div>
-              <div class="progress-text">
-                <span><%= xp %> | <%= (progress-100).toFixed(2) %>%</span> 
-                <!-- TODO: ОТКУДА ТУТ 63!? А!? -->
-                <span><%= level %></span>
-              </div>
         
         </div>
         <p>User: <%= name %></p>
